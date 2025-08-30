@@ -1,5 +1,5 @@
 -- ===============================
--- DATOS DE PRUEBA - E-COMMERCE
+-- INGRESO DE DATOS - E-COMMERCE
 -- ===============================
 USE feraytek;
 -- USUARIOS
