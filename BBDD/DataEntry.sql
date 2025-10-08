@@ -1,97 +1,158 @@
--- ===============================
--- INGRESO DE DATOS - E-COMMERCE
--- ===============================
+-- ======================================================================
+-- PROYECTO: FERAYTEK - Carga de Datos de Ejemplo
+-- Autor: Ayala & Fernández [UTN - FR Re] 
+-- Fecha: Octubre 2025
+-- Descripción:
+-- Este script carga datos de ejemplo en todas las tablas del sistema,
+-- respetando las claves foráneas, relaciones lógicas y coherencia interna.
+-- Ejecutar después de haber creado la base de datos con feraytek.sql
+-- ======================================================================
+
 USE feraytek;
--- USUARIOS
-INSERT INTO usuarios (email, password_hash, rol, estado)
-VALUES
-  ('juanperez@gmail.com',  '$2y$10$abcdef...', 'cliente', 'activo'),
-  ('mariaadmin@gmail.com', '$2y$10$ghijklm...', 'admin',   'activo');
 
--- CLIENTES
-INSERT INTO clientes (id_usuario, dni, nombre, apellido, telefono, direccion, ciudad, provincia, pais, codigo_postal, fecha_nacimiento)
+-- ----------------------------------------------------------------------
+-- 1) USUARIOS
+-- ----------------------------------------------------------------------
+INSERT INTO usuarios (nombre_usuario, email, password_hash, rol, estado)
 VALUES
-  (1, '30111222', 'Juan', 'Pérez', '1122334455', 'Calle Falsa 123', 'Buenos Aires', 'Buenos Aires', 'Argentina', '1000', '1990-05-20');
+('superadmin', 'superadmin@feraytek.com', 'hash_superadmin', 'admin', 'activo'),
+('admin_jose', 'admin.jose@feraytek.com', 'hash_admin', 'admin', 'activo'),
+('cliente_maria', 'maria.gomez@example.com', 'hash_maria', 'cliente', 'activo'),
+('cliente_juan', 'juan.perez@example.com', 'hash_juan', 'cliente', 'activo');
 
--- ADMINISTRADORES
+-- ----------------------------------------------------------------------
+-- 2) ADMINISTRADORES
+-- ----------------------------------------------------------------------
 INSERT INTO administradores (id_usuario, dni, nombre, apellido, telefono, cargo)
 VALUES
-  (2, '20222333', 'María', 'Gómez', '1199988877', 'superadmin');
+(1, '30111222', 'Super', 'Admin', '3794123456', 'Superadministrador'),
+(2, '32122333', 'José', 'Ramírez', '3794876543', 'Administrador General');
 
--- CATEGORÍAS
+-- ----------------------------------------------------------------------
+-- 3) CLIENTES
+-- ----------------------------------------------------------------------
+INSERT INTO clientes (id_usuario, dni, nombre, apellido, telefono, direccion, ciudad, provincia, pais, codigo_postal)
+VALUES
+(3, '40111222', 'María', 'Gómez', '3794123344', 'Av. San Martín 123', 'Resistencia', 'Chaco', 'Argentina', '3500'),
+(4, '42122333', 'Juan', 'Pérez', '3794765544', 'Belgrano 456', 'Corrientes', 'Corrientes', 'Argentina', '3400');
+
+-- ----------------------------------------------------------------------
+-- 4) CATEGORÍAS
+-- ----------------------------------------------------------------------
 INSERT INTO categorias (nombre_categoria, descripcion)
 VALUES
-  ('Notebooks', 'Portátiles de todas las marcas'),
-  ('Celulares', 'Smartphones y accesorios');
+('Laptops', 'Portátiles de alto rendimiento'),
+('Celulares', 'Smartphones de última generación'),
+('Periféricos', 'Teclados, mouse y accesorios'),
+('Audio', 'Auriculares y parlantes');
 
--- PRODUCTOS
-INSERT INTO productos (nombre, descripcion, precio_base, stock, id_categoria, estado)
+-- ----------------------------------------------------------------------
+-- 5) PRODUCTOS
+-- ----------------------------------------------------------------------
+INSERT INTO productos (nombre, descripcion, precio_base, stock, id_categoria)
 VALUES
-  ('Notebook Lenovo IdeaPad 3', 'Notebook 15" Ryzen 5, 8GB RAM, 256GB SSD', 350000, 10, 1, 'activo'),
-  ('Samsung Galaxy S23', 'Celular Samsung gama alta 256GB', 500000, 20, 2, 'activo');
+('Laptop Gamer Ultra 3000', 'Laptop con procesador Ryzen 7 y GPU RTX 4060.', 950000.00, 12, 1),
+('Celular Quantum Pro', 'Smartphone con pantalla OLED y cámara de 108MP.', 520000.00, 25, 2),
+('Mouse Inalámbrico XSpeed', 'Mouse ergonómico recargable con Bluetooth.', 15000.00, 100, 3),
+('Auriculares SoundMax', 'Auriculares Bluetooth con cancelación de ruido.', 28000.00, 60, 4);
 
--- VARIANTES DE PRODUCTO
+-- ----------------------------------------------------------------------
+-- 6) VARIANTES DE PRODUCTOS
+-- ----------------------------------------------------------------------
 INSERT INTO variantes_producto (id_producto, atributo, valor, precio, stock, sku)
 VALUES
-  (1, 'RAM', '16GB', 380000, 5, 'NB-LEN-16GB'),
-  (2, 'Color', 'Negro', NULL, 15, 'S23-BLACK');
+(1, 'RAM', '16GB', 970000.00, 6, 'LAP16-3000'),
+(1, 'RAM', '32GB', 1050000.00, 6, 'LAP32-3000'),
+(2, 'Color', 'Negro', NULL, 10, 'CELNQPRO'),
+(2, 'Color', 'Azul', NULL, 15, 'CELAZPRO');
 
--- IMÁGENES DE PRODUCTO
-INSERT INTO imagenes_productos (id_producto, id_variante, url_imagen, posicion, alt_text)
+-- ----------------------------------------------------------------------
+-- 7) IMÁGENES DE PRODUCTOS
+-- ----------------------------------------------------------------------
+INSERT INTO imagenes_productos (id_producto, url_imagen, posicion, alt_text)
 VALUES
-  (1, NULL, 'https://example.com/lenovo.jpg', 1, 'Lenovo IdeaPad 3'),
-  (2, NULL, 'https://example.com/s23.jpg', 1, 'Samsung Galaxy S23');
+(1, 'https://feraytek.com/img/laptop1.png', 1, 'Laptop Gamer Ultra 3000'),
+(2, 'https://feraytek.com/img/celular1.png', 1, 'Celular Quantum Pro'),
+(3, 'https://feraytek.com/img/mouse1.png', 1, 'Mouse Inalámbrico XSpeed'),
+(4, 'https://feraytek.com/img/audio1.png', 1, 'Auriculares SoundMax');
 
--- CARRITO
+-- ----------------------------------------------------------------------
+-- 8) CARRITO Y DETALLE
+-- ----------------------------------------------------------------------
 INSERT INTO carrito (id_usuario, estado)
 VALUES
-  (1, 'activo');
+(3, 'activo'),
+(4, 'activo');
 
--- CARRITO DETALLE
-INSERT INTO carrito_detalle (id_carrito, id_producto, id_variante, cantidad, precio_unitario)
+INSERT INTO carrito_detalle (id_carrito, id_producto, cantidad, precio_unitario, iva_porcentaje, iva_monto)
 VALUES
-  (1, 1, 1, 1, 380000),
-  (1, 2, NULL, 2, 500000);
+(1, 2, 1, 520000.00, 21.00, 90165.29),
+(2, 3, 2, 15000.00, 21.00, 5206.61);
 
--- PEDIDOS
+-- ----------------------------------------------------------------------
+-- 9) PEDIDOS
+-- ----------------------------------------------------------------------
 INSERT INTO pedidos (id_usuario, subtotal, descuento_total, costo_envio, total, estado, metodo_entrega)
 VALUES
-  (1, 1380000, 0, 5000, 1385000, 'pendiente', 'envio_domicilio');
+(3, 520000.00, 0.00, 5000.00, 525000.00, 'pagado', 'envio_domicilio'),
+(4, 30000.00, 0.00, 0.00, 30000.00, 'pendiente', 'retiro');
 
--- PEDIDO DETALLE
-INSERT INTO pedido_detalle (id_pedido, id_producto, id_variante, cantidad, precio_unitario)
-VALUES
-  (1, 1, 1, 1, 380000),
-  (1, 2, NULL, 2, 500000);
-
--- PAGOS
+-- ----------------------------------------------------------------------
+-- 10) PAGOS
+-- ----------------------------------------------------------------------
 INSERT INTO pagos (id_pedido, metodo_pago, estado_pago, id_transaccion, monto, fecha_pago)
 VALUES
-  (1, 'mercado_pago', 'aprobado', 'MP-123456', 1385000, NOW());
+(1, 'mercado_pago', 'aprobado', 'MP-001-ABC', 525000.00, NOW()),
+(2, 'mercado_pago', 'pendiente', 'MP-002-DEF', 30000.00, NULL);
 
--- ENVIOS
-INSERT INTO envios (id_pedido, destinatario, direccion_envio, ciudad, provincia, pais, codigo_postal, empresa_envio, numero_seguimiento, estado_envio, fecha_envio)
+-- ----------------------------------------------------------------------
+-- 11) FACTURAS
+-- ----------------------------------------------------------------------
+INSERT INTO facturas (numero_factura, id_pedido, id_pago, id_usuario, tipo, subtotal, iva_total, total)
 VALUES
-  (1, 'Juan Pérez', 'Calle Falsa 123', 'Buenos Aires', 'Buenos Aires', 'Argentina', '1000', 'Andreani', 'ENV-987654', 'en_camino', NOW());
+('F0001-00000001', 1, 1, 3, 'B', 430000.00, 90300.00, 520300.00);
 
--- RESEÑAS
-INSERT INTO reseñas (id_producto, id_usuario, calificacion, comentario)
+-- ----------------------------------------------------------------------
+-- 12) ENVÍOS
+-- ----------------------------------------------------------------------
+INSERT INTO envios (id_pedido, direccion_envio, ciudad, provincia, pais, codigo_postal, empresa_envio, numero_seguimiento, estado_envio)
 VALUES
-  (1, 1, 5, 'Excelente notebook, muy rápida'),
-  (2, 1, 4, 'Muy buen celular pero un poco caro');
+(1, 'Av. San Martín 123', 'Resistencia', 'Chaco', 'Argentina', '3500', 'Andreani', 'TRK-12345', 'en_camino');
 
--- DESCUENTOS
+-- ----------------------------------------------------------------------
+-- 13) RESEÑAS
+-- ----------------------------------------------------------------------
+INSERT INTO resenas (id_producto, id_usuario, calificacion, comentario)
+VALUES
+(1, 3, 5, 'Excelente laptop, rendimiento impresionante.'),
+(2, 4, 4, 'Muy buen celular, aunque la batería podría durar más.');
+
+-- ----------------------------------------------------------------------
+-- 14) DESCUENTOS
+-- ----------------------------------------------------------------------
 INSERT INTO descuentos (codigo, descripcion, tipo, valor, fecha_inicio, fecha_fin)
 VALUES
-  ('BIENVENIDO10', '10% de descuento en tu primera compra', 'porcentaje', 10, '2025-01-01', '2025-12-31');
+('FERA10', '10% de descuento en laptops', 'porcentaje', 10.00, '2025-10-01', '2025-12-31');
 
--- SOPORTE
+-- ----------------------------------------------------------------------
+-- 15) SOPORTE
+-- ----------------------------------------------------------------------
 INSERT INTO soporte (id_usuario, asunto, mensaje, canal)
 VALUES
-  (1, 'Problema con mi pedido', 'El envío figura como entregado pero no lo recibí', 'email');
+(3, 'Problema con envío', 'No recibí el número de seguimiento en el correo.', 'web');
 
--- LOGS
+-- ----------------------------------------------------------------------
+-- 16) LOGS
+-- ----------------------------------------------------------------------
 INSERT INTO logs (id_usuario, accion, ip, user_agent)
 VALUES
-  (1, 'Usuario inició sesión', '192.168.0.10', 'Mozilla/5.0'),
-  (2, 'Admin creó nuevo producto', '192.168.0.20', 'Chrome/115');
+(3, 'Inicio de sesión exitoso', '192.168.0.5', 'Chrome/Windows 10'),
+(1, 'Creación de nuevo producto', '192.168.0.1', 'Firefox/Linux');
+
+-- ----------------------------------------------------------------------
+-- 17) HISTORIAL DE PEDIDOS
+-- ----------------------------------------------------------------------
+INSERT INTO historial_pedidos (id_pedido, estado_anterior, estado_nuevo, id_usuario)
+VALUES
+(1, 'pendiente', 'pagado', 1);
+
