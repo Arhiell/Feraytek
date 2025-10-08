@@ -89,11 +89,9 @@ Tienda online enfocada en productos tecnológicos como **computadoras portátile
 
 | Nombre | Rol | GitHub |
 |--------|------|---------|
-| **Ariel [@ariel-github](https://github.com/ariel-github)** | Desarrollador Backend y Coordinador del proyecto | 🔗 [Perfil GitHub](https://github.com/ariel-github) |
-| **[Nombre de colega 1](https://github.com/colega1)** | Desarrollador Frontend | 🔗 [Perfil GitHub](https://github.com/colega1) |
-| **[Nombre de colega 2](https://github.com/colega2)** | Tester y documentación | 🔗 [Perfil GitHub](https://github.com/colega2) |
+| **Ariel Fernández** | Desarrollador Backend y Frontend | 🔗 [@Arhiell](https://github.com/Arhiell) |
+| **Leonel Fernández** | Desarrollador Frontend y Backend | 🔗 [@fernandez-leonel](https://github.com/fernandez-leonel) |
 
----
 
 ## 🧾 Licencia y finalidad
 
