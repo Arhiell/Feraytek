@@ -1,22 +1,48 @@
 # 🛒 Feraytek - Tienda Online de Tecnología
 
-Bienvenido a **Feraytek**, una tienda online enfocada en la venta de productos tecnológicos como **computadoras portátiles 💻 y celulares 📱**.  
-Este proyecto está diseñado como práctica de **desarrollo web fullstack**, integrando frontend, backend, base de datos y pasarela de pago.
+<div align="center">
+
+**Proyecto académico desarrollado como práctica de desarrollo web fullstack.**  
+Tienda online enfocada en productos tecnológicos como **computadoras portátiles 💻 y celulares 📱**, integrando **frontend, backend, base de datos y pasarela de pago**.
+
+</div>
+
+---
+
+## 🔗 Repositorio de la API
+
+<div align="center">
+
+<a href="https://github.com/tuusuario/feraytek-api" target="_blank" style="text-decoration:none;">
+  <img src="https://img.shields.io/badge/🌐%20Ver%20Repositorio%20de%20la%20API-181717?style=for-the-badge&logo=github&logoColor=white" alt="Repositorio API de Feraytek"/>
+</a>
+
+</div>
+
+---
+
+## 🧭 Índice
+
+- [📌 Características principales](#-características-principales)
+- [🛠️ Tecnologías utilizadas](#️-tecnologías-utilizadas)
+- [⚙️ Instalación y configuración](#-instalación-y-configuración)
+- [🎓 Créditos académicos y autores](#-créditos-académicos-y-autores)
+- [🧾 Licencia y finalidad](#-licencia-y-finalidad)
 
 ---
 
 ## 📌 Características principales
 
-- 👤 **Gestión de usuarios**: Registro, inicio de sesión y recuperación de contraseña.
-- 🛍️ **Carrito de compras**: Agregar, eliminar y modificar productos antes de la compra.
-- 💳 **Pagos online**: Integración con [Mercado Pago](https://www.mercadopago.com.ar/).
-- 📦 **Gestión de envíos**: Datos de envío y seguimiento de estado.
-- 📧 **Notificaciones por correo**: Confirmación de compra y actualización de estado.
-- 📊 **Panel de administrador**:
-  - CRUD de productos.
-  - Gestión de usuarios.
-  - Informes de ventas y estadísticas.
-- 🔐 **Sesiones seguras**: Mantener la sesión activa por un tiempo definido.
+- 👤 **Gestión de usuarios**: Registro, inicio de sesión y recuperación de contraseña.  
+- 🛍️ **Carrito de compras**: Agregar, eliminar y modificar productos antes de la compra.  
+- 💳 **Pagos online**: Integración con [Mercado Pago](https://www.mercadopago.com.ar/).  
+- 📦 **Gestión de envíos**: Datos de envío y seguimiento de estado.  
+- 📧 **Notificaciones por correo**: Confirmación de compra y actualización de estado.  
+- 📊 **Panel de administrador**:  
+  - CRUD de productos.  
+  - Gestión de usuarios.  
+  - Informes de ventas y estadísticas.  
+- 🔐 **Sesiones seguras**: Mantener la sesión activa por un tiempo definido.  
 
 ---
 
@@ -42,7 +68,43 @@ Este proyecto está diseñado como práctica de **desarrollo web fullstack**, in
 
 ## ⚙️ Instalación y configuración
 
-1. **Clonar el repositorio**  
+1. **Clonar el repositorio**
    ```bash
    git clone https://github.com/tuusuario/feraytek.git
    cd feraytek
+
+
+---
+
+## 🎓 Créditos académicos y autores
+
+**Proyecto desarrollado en el marco de la cátedra:**  
+📘 _Trabajo Final Integrador y Metodología de Investigación II_  
+👨‍🏫 **Profesor a cargo:** Lic. Marco Sosca  
+🏛️ **Institución:** Universidad Tecnológica Nacional — Facultad Regional Resistencia  
+
+---
+
+### 👥 Autores
+
+| Nombre | Rol | GitHub |
+|--------|------|---------|
+| **Ariel [@ariel-github](https://github.com/ariel-github)** | Desarrollador Backend y Coordinador del proyecto | 🔗 [Perfil GitHub](https://github.com/ariel-github) |
+| **[Nombre de colega 1](https://github.com/colega1)** | Desarrollador Frontend | 🔗 [Perfil GitHub](https://github.com/colega1) |
+| **[Nombre de colega 2](https://github.com/colega2)** | Tester y documentación | 🔗 [Perfil GitHub](https://github.com/colega2) |
+
+---
+
+## 🧾 Licencia y finalidad
+
+Este proyecto fue desarrollado con **fines académicos y formativos**, como parte del **Trabajo Final Integrador** de la carrera _Técnico Universitario en Programación_ (UTN-FRRe).  
+Su propósito es demostrar la integración de tecnologías **frontend, backend y base de datos**, aplicando buenas prácticas de arquitectura **MVC**, principios de **seguridad** y diseño **responsivo**.
+
+---
+
+<div align="center">
+
+💻 Hecho con pasión y dedicación por el equipo de **Feraytek**  
+© 2025 — UTN FRRe  
+
+</div>
